@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { guideChips, guideHref, guideImage, relatedGuides } from "@/lib/guide";
 import type { GuideItem } from "@/lib/guide";
 import { GuideCard } from "@/components/GuideCard";
@@ -37,11 +38,16 @@ export function ArticleLayout({ item, backHref, backLabel, allItems }: ArticleLa
         {backLabel}
       </Link>
       <header className="mt-8 overflow-hidden rounded-xl border border-tamarind/12 bg-[#fbf5e9] shadow-[0_18px_55px_rgba(64,43,27,0.09)]">
-        <div
-          className="min-h-[18rem] bg-[linear-gradient(135deg,rgba(184,95,61,0.2),rgba(36,88,70,0.18)),linear-gradient(0deg,rgba(247,239,225,0.78),rgba(247,239,225,0.78))] bg-cover bg-center"
-          style={{ backgroundImage: `linear-gradient(180deg, rgba(44,33,27,0.08), rgba(44,33,27,0.38)), url(${image})` }}
-          aria-hidden="true"
-        />
+        <div className="relative min-h-[18rem] overflow-hidden bg-[linear-gradient(135deg,rgba(184,95,61,0.2),rgba(36,88,70,0.18)),linear-gradient(0deg,rgba(247,239,225,0.78),rgba(247,239,225,0.78))] sm:min-h-[24rem]">
+          <Image
+            src={image}
+            alt=""
+            fill
+            sizes="(min-width: 1152px) 1152px, 100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#2c211b]/8 to-[#2c211b]/38" aria-hidden="true" />
+        </div>
         <div className="grid gap-0 lg:grid-cols-[minmax(0,1fr)_19rem]">
           <div className="p-7 sm:p-9">
             <MoodTag>{item.category}</MoodTag>

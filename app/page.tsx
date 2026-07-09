@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { GuideCard } from "@/components/GuideCard";
 import { BrandLockup } from "@/components/BrandLockup";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -92,9 +93,13 @@ export default function Home() {
   return (
     <>
       <section className="relative min-h-[620px] overflow-hidden border-b border-tamarind/10">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[url('/images/myanmar-hero.png')] bg-cover bg-center bg-fixed"
+        <Image
+          src="/images/myanmar-hero.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-[#2c211b]/38" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#211711]/88 via-[#2c211b]/66 to-[#2c211b]/18" />

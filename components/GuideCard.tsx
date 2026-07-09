@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { guideChips, guideImage } from "@/lib/guide";
 import type { GuideItem } from "@/lib/guide";
 import { MoodTag } from "@/components/MoodTag";
@@ -18,11 +19,16 @@ export function GuideCard({ item, href }: GuideCardProps) {
       className="group flex h-full flex-col justify-between overflow-hidden rounded-lg border border-tamarind/12 bg-[#fbf5e9] shadow-[0_12px_32px_rgba(64,43,27,0.07)] transition duration-200 hover:-translate-y-1 hover:border-terracotta/30 hover:bg-[#fff9ef] hover:shadow-soft"
     >
       <div className="p-5 sm:p-6">
-        <div
-          className="mb-5 aspect-[4/3] rounded-md border border-tamarind/10 bg-[linear-gradient(135deg,rgba(184,95,61,0.18),rgba(36,88,70,0.16)),linear-gradient(0deg,rgba(251,245,233,0.86),rgba(251,245,233,0.86))] bg-cover bg-center"
-          style={{ backgroundImage: `linear-gradient(180deg, rgba(44,33,27,0.05), rgba(44,33,27,0.24)), url(${image})` }}
-          aria-hidden="true"
-        />
+        <div className="relative mb-5 aspect-[4/3] overflow-hidden rounded-md border border-tamarind/10 bg-[linear-gradient(135deg,rgba(184,95,61,0.18),rgba(36,88,70,0.16)),linear-gradient(0deg,rgba(251,245,233,0.86),rgba(251,245,233,0.86))]">
+          <Image
+            src={image}
+            alt=""
+            fill
+            sizes="(min-width: 1024px) 500px, (min-width: 768px) 50vw, calc(100vw - 2.5rem)"
+            className="object-cover transition duration-300 group-hover:scale-[1.03]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#2c211b]/5 to-[#2c211b]/24" aria-hidden="true" />
+        </div>
         <MoodTag>{item.category}</MoodTag>
         {item.isComingSoon ? (
           <span className="ml-2 inline-flex rounded-full bg-jade/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-jade">
